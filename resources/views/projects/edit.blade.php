@@ -18,4 +18,6 @@
         <button type="submit">DELETE</button>
     </form>
 
+    <a href="/projects">Home</a>
+
 @endsection

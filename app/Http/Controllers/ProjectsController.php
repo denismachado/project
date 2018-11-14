@@ -16,53 +16,63 @@ class ProjectsController extends Controller
     }
 
     public function create(){
+
         return view ('projects.create');
+
     }
 
-    public function store(){
+    public function store(Project $project){
 
-        $project = New Project();
+            $project->create(request(['title', 'description']));
 
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
+//        $project = New Project();
+//        $project->title = request('title');
+//        $project->description = request('description');
+//        $project->save();
 
         return redirect('/projects');
 
     }
 
-    public function show($id){
+    public function show(Project $project){
 
-        $project = Project::find($id);
         return view('projects.show', compact('project'));
 
     }
 
-    public function update($id){
+    public function update(Project $project){
 
-        $project = Project::find($id);
+        $project->update(request(['title', 'description']));
 
-        $project->title = request('title');
-        $project->description = request('description');
-        $project->save();
-
-        return redirect ('/projects');
+        return redirect ('/projects/' . $project->id);
 
     }
 
-    public function edit($id){
-
-        $project = Project::find($id);
+    public function edit(Project $project){
 
         return view('projects.edit', compact('project'));
     }
 
-    public function destroy($id){
+//    public function edit($id){
+//
+//        $project = Project::findOrFail($id);
+//
+//        return view('projects.edit', compact('project'));
+//    }
 
-        $project = Project::find($id);
+    public function destroy(Project $project){
 
         $project->delete();
 
         return redirect('/projects');
     }
+
+//    public function destroy($id){
+//
+//        $project = Project::findOrFail($id);
+//
+//        $project->delete();
+//
+//        return redirect('/projects');
+//    }
 }
