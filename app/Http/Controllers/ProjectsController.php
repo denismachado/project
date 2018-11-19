@@ -23,7 +23,12 @@ class ProjectsController extends Controller
 
     public function store(Project $project){
 
-            $project->create(request(['title', 'description']));
+        $validated = request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required','max:10']
+        ]);
+
+        $project->create($validated);
 
 //        $project = New Project();
 //        $project->title = request('title');
@@ -42,7 +47,12 @@ class ProjectsController extends Controller
 
     public function update(Project $project){
 
-        $project->update(request(['title', 'description']));
+        $form_validated = request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => 'required'
+        ]);
+
+        $project->update($form_validated);
 
         return redirect ('/projects/' . $project->id);
 

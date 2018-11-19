@@ -12,6 +12,16 @@
         <button type="submit">EDIT</button>
     </form>
 
+    @if($errors->any())
+    <div class="notification">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form method="POST" action="/projects/{{ $project->id }}">
         @method('DELETE')
         @csrf

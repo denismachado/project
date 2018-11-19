@@ -7,9 +7,17 @@
 
     <form method="post" action="/projects">
         {{ csrf_field() }}
-        <input type="text" name="title" placeholder="project title">
-        <textarea name="description" name="description" cols="30" rows="10"></textarea>
+        <input type="text" name="title" placeholder="project title" value="{{ old('title') }}">
+        <textarea name="description" name="description" cols="30" rows="10">{{ old('description') }}</textarea>
         <button type="submit">Create Project</button>
     </form>
+
+    <div class="notification">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 
 @endsection
