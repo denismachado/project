@@ -10,10 +10,16 @@
     <a href="/projects/{{ $project->id }}/edit">Edit</a>
     <a href="/projects">Home</a>
 
-    <ul>
+    <div>
         @foreach ($project->tasks as $task)
-        <li>{{ $task->description }}</li>
+
+            <form method="post" action="/tasks/{{ $task->id }}">
+                @method('PATCH')
+                @csrf
+                <input type="checkbox" name="completed" {{ $task->completed ? "checked" : "" }} onchange="this.form.submit()"> {{ $task->description }}<br>
+            </form>
+
         @endforeach
-    </ul>
+    </div>
 
 @endsection

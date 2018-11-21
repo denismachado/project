@@ -28,3 +28,5 @@ Route::resource('projects', 'ProjectsController');
 //Route::get('/projects/{id}/edit', 'ProjectsController@edit');
 //Route::patch('/projects/{id}', 'ProjectsController@update');
 //Route::delete('/projects/{id}', 'ProjectsController@destroy');
+
+Route::patch('/tasks/{id}','ProjectTasksController@update');
