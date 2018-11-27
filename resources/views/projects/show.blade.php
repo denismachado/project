@@ -13,8 +13,8 @@
     <div>
         @foreach ($project->tasks as $task)
 
-            <form method="post" action="/tasks/{{ $task->id }}">
-                @method('PATCH')
+            <form method="post" action="/complete-tasks/{{ $task->id }}">
+                {{-- @method('PATCH') --}}
                 @csrf
                 <input type="checkbox" name="completed" {{ $task->completed ? "checked" : "" }} onchange="this.form.submit()"> {{ $task->description }}<br>
             </form>
