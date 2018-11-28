@@ -9,6 +9,7 @@ use App\Task;
 class CompleteTaskController extends Controller
 {
     public function store(Task $task){
+
         $task->completed();
         return back();
     }
