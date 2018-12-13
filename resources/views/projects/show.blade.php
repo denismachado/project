@@ -16,6 +16,9 @@
             <form method="post" action="/complete-tasks/{{ $task->id }}">
                 {{-- @method('PATCH') --}}
                 @csrf
+                @if ($task->completed)
+                    @method('DELETE')
+                @endif
                 <input type="checkbox" name="completed" {{ $task->completed ? "checked" : "" }} onchange="this.form.submit()"> {{ $task->description }}<br>
             </form>
 
