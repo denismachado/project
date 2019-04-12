@@ -22,7 +22,7 @@ Route::get('/contact', function () {
 
 Route::resource('projects', 'ProjectsController');
 //Route::get('/projects', 'ProjectsController@index');
-//Route::post('/projects', 'ProjectsController@store');z
+//Route::post('/projects', 'ProjectsController@store');
 //Route::get('/projects/create', 'ProjectsController@create');
 //Route::get('/projects/{id}', 'ProjectsController@show');
 //Route::get('/projects/{id}/edit', 'ProjectsController@edit');
